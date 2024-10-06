@@ -1,7 +1,12 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import declarative_base, sessionmaker
+import os
+from dotenv import load_dotenv
 
-URL_DATABASE = 'sqlite:///test.db'
+load_dotenv()
+
+
+URL_DATABASE = os.environ.get('DATABASE_URL')
 
 engine = create_engine(URL_DATABASE, connect_args={'check_same_thread': False})
 
